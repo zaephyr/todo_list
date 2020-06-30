@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <title>To Do List</title>
+    </head>
+    <body>
+        <nav>To Do Boo</nav>
+        <div class="main">
+            <div class="side-nav">
+                <div id="my-lists">
+                    <div class="title-tab">
+                        <div class="row">My Lists <button id="add-project">+ new</button></div>
+                        <div id="new-project">
+                            <div class="new-project-content">
+                                <input id="project-name" type="text" value="" />
+                                <span class="close">&times;</span>
+                                <button id="ok">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li class="task-list" data-filter="all-tasks">All Tasks</li>
+                    </ul>
+                </div>
+                <div class="calendar">
+                    <div class="title-tab">Calendar</div>
+                    <ul>
+                        <li class="task-list">3 day</li>
+                        <li class="task-list">this week</li>
+                        <li class="task-list">this month</li>
+                    </ul>
+                </div>
+                <div class="tags">
+                    <div class="title-tab">Tags</div>
+                </div>
+            </div>
+            <div class="task-container">
+                <div class="task-table">
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Task name</th>
+                                <th>Description</th>
+                                <th>Due Date</th>
+                                <th>Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table"></tbody>
+                    </table>
+                </div>
+                <!-- <button id="new-task">new task</button> -->
+                <div class="add-task-window">
+                    <div id="add-task-prompt">
+                        <!-- <span class="close">&times;</span></br> -->
+                        <label for="title">Title</label>
+                        <input id="title" type="text" value="" name="title" />
+
+                        <label for="description">Description</label>
+                        <input id="description" type="text" value="" name="description" />
+
+                        <label for="priority">Priority</label>
+                        <input id="priority" list="priorities" value="" name="priority" />
+                        <datalist id="priorities">
+                            <option value="Normal"> </option>
+                            <option value="Important"> </option>
+                            <option value="Very Important"> </option>
+                            <option value="Not Important"> </option>
+                        </datalist>
+
+                        <label for="due-date">Due Date</label>
+                        <input id="due-date" type="datetime-local" value="" name="due-date" />
+
+                        <button id="add-task-btn">add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="main.js"></script>
+</html>
