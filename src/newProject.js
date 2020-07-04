@@ -1,33 +1,44 @@
-import { updateProjList } from './removeItems';
+import { updateProjList, updateTasksList } from './removeItems';
 
-const newProject = () => {
-    const newProjectWindow = document.getElementById('new-project');
-    const addBtn = document.getElementById('add-project');
-    const span = document.getElementsByClassName('close')[0];
+const selectProject = () => {
+    const filterProjs = document.querySelectorAll('.task-list');
 
-    addBtn.onclick = () => {
-        newProjectWindow.style.display = 'block';
-    };
+    filterProjs.forEach((filterProj) => {
+        filterProj.addEventListener('click', () => {
+            const filter = filterProj.getAttribute('data-filter');
+            const tasks = JSON.parse(localStorage.getItem('tasks'));
 
-    span.onclick = () => {
-        newProjectWindow.style.display = 'none';
-    };
+            for (let j = 0; j < tasks.length; j++) {
+                tasks[j]['active'] = false;
+                if (filter == 'all-tasks') {
+                    tasks[j]['active'] = true;
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    console.log('all tasks');
+                    updateTasksList();
+                    updateProjList();
+                } else if (filter == tasks[j]['project']) {
+                    tasks[j]['active'] = true;
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    updateTasksList();
+                    updateProjList();
 
-    window.onclick = (e) => {
-        if (e.target == newProjectWindow) {
-            newProjectWindow.style.display = 'none';
-        }
-    };
+                    console.log('non task filter');
+                } else {
+                    tasks[j]['active'] = false;
+                    localStorage.setItem('tasks', JSON.stringify(tasks));
+                    console.log('kaboom');
+                }
+            }
+        });
+    });
 };
 
 const addProject = () => {
     const ok = document.getElementById('ok');
-    const newProjectWindow = document.getElementById('new-project');
-    let project;
 
     ok.onclick = () => {
-        project = JSON.parse(localStorage.getItem('projects'));
         const projName = document.getElementById('project-name');
+        let project = JSON.parse(localStorage.getItem('projects'));
 
         const nameTaken = (name) => {
             return name == projName.value;
@@ -36,16 +47,15 @@ const addProject = () => {
         if (project.some(nameTaken)) {
             alert('Project name already taken');
             projName.value = '';
-            return;
+        } else if (projName.value == '') {
         }
 
         project.push(projName.value);
         localStorage.setItem('projects', JSON.stringify(project));
 
-        newProjectWindow.style.display = 'none';
         projName.value = '';
         updateProjList();
     };
 };
 
-export { newProject, addProject };
+export { addProject, selectProject };

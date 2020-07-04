@@ -1,5 +1,5 @@
-import { newProject, addProject } from './newProject';
-import { newTask } from './tasks';
+import { addProject, selectProject } from './newProject';
+import { newTask, addTaskWindow, selectTask } from './tasks';
 import { myStorage } from './myStorage';
 import { removeItems } from './removeItems';
 
@@ -11,8 +11,9 @@ if (localStorage.getItem('tasks') == null) {
     localStorage.setItem('tasks', JSON.stringify([]));
 }
 
+addTaskWindow();
 myStorage();
-
-newProject();
 addProject();
 newTask();
+selectProject();
+selectTask();
