@@ -1,5 +1,5 @@
 import { projInStorage, tasksInStorage } from './myStorage';
-import { selectTask } from './tasks';
+import { selectTask, completeTask } from './tasks';
 
 const updateProjList = () => {
     const myList = document.getElementById('my-lists');
@@ -47,7 +47,9 @@ const updateTasksList = () => {
         tasksList.removeChild(tasksList.lastChild);
     }
     tasksInStorage();
+    updateProjList();
     selectTask();
+    completeTask();
 };
 
 export { removeProj, updateProjList, updateTasksList };

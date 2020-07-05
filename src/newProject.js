@@ -1,37 +1,36 @@
 import { updateProjList, updateTasksList } from './removeItems';
 
-const selectProject = () => {
+const clickEvent = () => {
     const filterProjs = document.querySelectorAll('.task-list');
 
-    filterProjs.forEach((filterProj) => {
-        filterProj.addEventListener('click', () => {
-            const filter = filterProj.getAttribute('data-filter');
-            const tasks = JSON.parse(localStorage.getItem('tasks'));
-
-            for (let j = 0; j < tasks.length; j++) {
-                tasks[j]['active'] = false;
-                if (filter == 'all-tasks') {
-                    tasks[j]['active'] = true;
-                    localStorage.setItem('tasks', JSON.stringify(tasks));
-                    console.log('all tasks');
-                    updateTasksList();
-                    updateProjList();
-                } else if (filter == tasks[j]['project']) {
-                    tasks[j]['active'] = true;
-                    localStorage.setItem('tasks', JSON.stringify(tasks));
-                    updateTasksList();
-                    updateProjList();
-
-                    console.log('non task filter');
-                } else {
-                    tasks[j]['active'] = false;
-                    localStorage.setItem('tasks', JSON.stringify(tasks));
-                    console.log('kaboom');
-                }
-            }
-        });
-    });
+    for (let i = 0; i < filterProjs.length; i++) {
+        filterProjs[i].onclick = function () {
+            const atribute = filterProjs[i].getAttribute('data-filter');
+            filterProjects(atribute);
+        };
+    }
 };
+
+const filterProjects = (filter) => {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    filter;
+    for (let j = 0; j < tasks.length; j++) {
+        tasks[j]['active'] = false;
+
+        if (filter == tasks[j]['project']) {
+            tasks[j]['active'] = true;
+        } else if (filter == 'all-tasks') {
+            tasks[j]['active'] = true;
+        } else if (filter !== tasks[j]['project']) {
+            tasks[j]['active'] = false;
+        }
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    updateTasksList();
+    updateProjList;
+};
+
+const selectProject = () => {};
 
 const addProject = () => {
     const ok = document.getElementById('ok');
@@ -58,4 +57,4 @@ const addProject = () => {
     };
 };
 
-export { addProject, selectProject };
+export { addProject, clickEvent };

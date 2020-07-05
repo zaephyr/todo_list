@@ -1,5 +1,6 @@
 import { removeProj } from './removeItems';
-import { selectProject } from './newProject';
+import { selectProject, clickEvent } from './newProject';
+import { formatDistanceToNow, parseISO, format, parse } from 'date-fns';
 
 const projInStorage = () => {
     const projects = JSON.parse(localStorage.getItem('projects'));
@@ -34,6 +35,7 @@ const projInStorage = () => {
             addProjToSelection.value = projects[i];
 
             projectSelection.appendChild(addProjToSelection);
+            clickEvent();
         }
     }
 };
@@ -56,7 +58,12 @@ const tasksInStorage = () => {
                     newTd.textContent = tasks[i]['title'];
                     newTd.style.minWidth = '15rem';
                 } else if (j == 1) {
-                    newTd.textContent = tasks[i]['dueDate'];
+                    if (tasks[i]['dueDate'] !== '') {
+                        const showDate = formatDistanceToNow(parse(tasks[i]['dueDate'], 'yyyy-MM-dd', new Date()));
+                        newTd.textContent = showDate;
+                    } else {
+                        newTd.textContent = '';
+                    }
                 } else if (j == 2) {
                     newTd.className = tasks[i]['priority'].split(' ').join('-').toLowerCase();
                     const checkbox = document.createElement('input');

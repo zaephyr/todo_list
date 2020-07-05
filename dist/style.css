@@ -164,17 +164,27 @@ tr:not(:first-child) {
     justify-content: flex-end;
 }
 
-input[type='datetime-local'] {
+.radios {
+    display: flex;
+    justify-content: space-around;
+}
+
+.radios > div {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+input[name='due-date'] {
     position: relative;
 }
 
-input[type='datetime-local']::-webkit-calendar-picker-indicator {
+input[name='due-date']::-webkit-calendar-picker-indicator {
     color: transparent;
     background: none;
     z-index: 1;
 }
 
-input[type='datetime-local']:before {
+input[name='due-date']:before {
     display: block;
     font-family: 'FontAwesome';
     content: '\f073';
@@ -225,4 +235,13 @@ tr td:nth-child(3) {
 
 #add-task-btn {
     margin-top: 1rem;
+}
+
+#complete-task-btn {
+    margin-top: 2rem;
+    padding: 1rem;
+
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
 }

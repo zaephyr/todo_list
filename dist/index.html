@@ -38,7 +38,7 @@
                 </select>
 
                 <label for="due-date">Due Date</label>
-                <input id="due-date" type="datetime-local" value="" name="due-date" />
+                <input id="due-date" type="date" value="" name="due-date" />
 
                 <button id="add-task-btn">add</button>
                 <button id="edit-task-btn">Edit</button>
@@ -48,7 +48,7 @@
             <div class="side-nav">
                 <div id="my-lists">
                     <div class="title-tab">
-                        <div class="row">My Lists</div>
+                        <div class="row">My projects</div>
                     </div>
                     <ul>
                         <li class="task-list" data-filter="all-tasks">All Tasks</li>
@@ -67,6 +67,7 @@
                     <table style="width: 100%;">
                         <tbody id="table"></tbody>
                     </table>
+                    <button id="complete-task-btn">Complete Task</button>
                 </div>
                 <!-- <button id="new-task">new task</button> -->
             </div>

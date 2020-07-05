@@ -1,4 +1,5 @@
 import { updateTasksList } from './removeItems';
+import { differenceInDays, parseISO, format } from 'date-fns';
 
 const title = document.getElementById('title');
 const projectsList = document.getElementById('projects');
@@ -9,9 +10,9 @@ const taskWindow = document.getElementById('add-task-window');
 const editTaskBtn = document.getElementById('edit-task-btn');
 
 class Task {
-    constructor(title, description, dueDate, priority, project, active) {
+    constructor(title, description, dueDate, priority, project, active, completed) {
         active = true;
-        return { title, description, dueDate, priority, project, active };
+        return { title, description, dueDate, priority, project, active, completed };
     }
 }
 
@@ -90,6 +91,27 @@ const selectTask = () => {
     }
 };
 
+const completeTask = () => {
+    const checked = document.querySelectorAll('input[type="checkbox"]');
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    const completeTaskBtn = document.getElementById('complete-task-btn');
+
+    completeTaskBtn.onclick = () => {
+        checked.forEach((checkedTask) => {
+            if (checkedTask.checked) {
+                const checkedTaskTitle = checkedTask.parentNode.parentNode.firstChild.textContent;
+                for (let i = 0; i < tasks.length; i++) {
+                    if (tasks[i]['title'] == checkedTaskTitle) {
+                        tasks.splice(i, 1);
+                        localStorage.setItem('tasks', JSON.stringify(tasks));
+                        updateTasksList();
+                    }
+                }
+            }
+        });
+    };
+};
+
 const newTask = () => {
     const addBtn = document.getElementById('add-task-btn');
     const newTaskWindow = document.getElementById('add-task-window');
@@ -97,6 +119,7 @@ const newTask = () => {
     addBtn.onclick = () => {
         if (title.value && priority.value) {
             const theTask = new Task(title.value, description.value, dueDate.value, priority.value, projectsList.value);
+
             const tasks = JSON.parse(localStorage.getItem('tasks'));
 
             tasks.push(theTask);
@@ -106,9 +129,8 @@ const newTask = () => {
             newTaskWindow.style.display = 'none';
 
             clearTaskForm();
-            selectTask();
         }
     };
 };
 
-export { newTask, selectTask, addTaskWindow };
+export { newTask, selectTask, addTaskWindow, completeTask };
