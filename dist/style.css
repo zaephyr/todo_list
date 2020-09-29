@@ -50,6 +50,15 @@ nav {
     min-width: max-content;
 }
 
+.side-nav ul {
+    padding: 1rem 1rem;
+}
+
+.side-nav ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
 .title-tab {
     display: flex;
     flex-direction: column;
@@ -71,8 +80,15 @@ button {
 #new-project {
     margin-top: 2rem;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
+#ok {
+    width: 2.2rem;
+    text-align: center;
+    align-self: center;
+}
 .new-project-content {
     background-color: #6c5ce7;
 }
