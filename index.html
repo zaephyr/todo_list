@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+
+        <title>To Do List</title>
+    </head>
+    <body>
+        <nav>To Do Boo</nav>
+        <div id="add-task-window">
+            <div id="add-task-prompt">
+                <span class="close">&times;</span>
+
+                <label for="title">Title</label>
+                <input id="title" type="text" placeholder="Title" name="title" />
+
+                <label for="projects">Project</label>
+                <select id="projects" type="search" name="projects">
+                    <option value=""></option>
+                </select>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="Normal">Normal</option>
+                    <option value="Important">Important</option>
+                    <option value="Very Important">Very Important</option>
+                    <option value="Not Important">Not Important</option>
+                </select>
+
+                <label for="due-date">Due Date</label>
+                <input id="due-date" type="date" value="" name="due-date" />
+
+                <button id="add-task-btn">add</button>
+                <button id="edit-task-btn">Edit</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="side-nav">
+                <div id="my-lists">
+                    <div class="title-tab">
+                        <div class="row">My projects</div>
+                    </div>
+                    <ul>
+                        <li class="task-list" data-filter="all-tasks">All Tasks</li>
+                    </ul>
+                </div>
+                <div id="new-project">
+                    <input id="project-name" type="text" placeholder="Add new project ..." size="14" />
+                    <button id="ok">+</button>
+                </div>
+            </div>
+            <div class="task-container">
+                <div class="task-table">
+                    <button id="add-new-task">+ add New Task</button>
+
+                    <table style="width: 100%">
+                        <tbody id="table"></tbody>
+                    </table>
+                    <button id="complete-task-btn">Complete Task</button>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="main.js"></script>
+</html>

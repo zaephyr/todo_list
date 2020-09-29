@@ -1,0 +1,263 @@
+* {
+    font-size: 62.5%;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* top Title */
+nav {
+    width: 70vw;
+    margin: 0 15vw;
+
+    padding: 1rem 0;
+    color: #dfe6e9;
+    font-size: 4rem;
+    background-color: #6c5ce7;
+    text-align: center;
+}
+
+.main {
+    height: 100vh;
+    margin: 0 15vw;
+
+    display: flex;
+    align-self: center;
+    background-color: #dfe6e9;
+    align-items: stretch;
+}
+@media only screen and (max-width: 800px) {
+    nav,
+    .main {
+        width: 100vw;
+        margin: 0;
+    }
+}
+
+/* side MY List nav */
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #a29bfe;
+    width: 15vw;
+    min-width: max-content;
+}
+
+.side-nav ul {
+    padding: 1rem 1rem;
+}
+
+.side-nav ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 3rem;
+    padding-left: 1.5rem;
+
+    font-size: 2.5rem;
+    color: #636e72;
+}
+
+button {
+    margin-left: 1rem;
+    font-size: 1.6rem;
+    color: #dfe6e9;
+    background-color: #6c5ce7;
+}
+#new-project {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#ok {
+    width: 2.2rem;
+    text-align: center;
+    align-self: center;
+}
+.new-project-content {
+    background-color: #6c5ce7;
+}
+
+/* Main task list */
+.task-list {
+    padding-top: 1rem;
+    font-size: 1.6rem;
+    color: #dfe6e9;
+    text-align: center;
+    list-style: none;
+}
+
+.task-list:hover {
+    text-decoration: underline;
+}
+
+#new-task {
+    margin: 2rem 0 0 2rem;
+}
+
+#add-new-task {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.task-container {
+    width: 100%;
+    display: flex;
+}
+
+.task-table {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2.5rem;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    margin-top: 2rem;
+}
+
+tr {
+    background-color: #a29bfe;
+    color: #dfe6e9;
+    font-size: 3rem;
+    padding: 1rem;
+    height: 4rem;
+    border: black 1px solid;
+}
+
+tr:not(:first-child) {
+    margin-top: 1rem;
+}
+
+/* add task window */
+
+#add-task-window {
+    display: none;
+}
+
+#add-task-prompt {
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: fixed; /*it can be fixed too*/
+    width: 20rem;
+    height: 30rem;
+    padding: 0 2rem 2rem 2rem;
+    color: #dfe6e9;
+
+    display: flex; /* Hidden by default */
+    flex-direction: column;
+
+    justify-content: center;
+
+    z-index: 1; /* Sit on top */
+    background-color: cadetblue;
+}
+
+.close {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #dfe6e9;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.radios {
+    display: flex;
+    justify-content: space-around;
+}
+
+.radios > div {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+input[name='due-date'] {
+    position: relative;
+}
+
+input[name='due-date']::-webkit-calendar-picker-indicator {
+    color: transparent;
+    background: none;
+    z-index: 1;
+}
+
+input[name='due-date']:before {
+    display: block;
+    font-family: 'FontAwesome';
+    content: '\f073';
+    /* This is the calendar icon in FontAwesome */
+
+    position: absolute;
+    right: 3px;
+    color: #999;
+}
+
+#table {
+    display: flex;
+    flex-direction: column;
+}
+
+#table > tr {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 3rem;
+}
+
+tr td:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    width: 4rem;
+}
+
+.normal {
+    background-color: #55efc4;
+}
+
+.important {
+    background-color: #ffeaa7;
+}
+
+.very-important {
+    background-color: #ff7675;
+}
+
+[type='checkbox']:not(:checked),
+[type='checkbox']:checked {
+    opacity: 0.6;
+
+    height: 2rem;
+    width: 2rem;
+}
+
+#add-task-btn {
+    margin-top: 1rem;
+}
+
+#complete-task-btn {
+    margin-top: 2rem;
+    padding: 1rem;
+
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+}
